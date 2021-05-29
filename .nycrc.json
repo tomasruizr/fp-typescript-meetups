@@ -1,0 +1,7 @@
+{
+  "exclude": [
+    "src/fixtures/{,**}/*.ts",
+    "src/fixtures/{,**}/*.js",
+    "src/{,**}/*.test.ts"
+  ]
+}
