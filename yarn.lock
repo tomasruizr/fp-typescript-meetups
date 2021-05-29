@@ -299,9 +299,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/crocks@https://github.com/tomasruizr/types-crocks.git":
+"@types/crocks@https://github.com/tomasruizr/types-crocks.git#typeRedefinition":
   version "0.12.3"
-  resolved "https://github.com/tomasruizr/types-crocks.git#d02cc80eea1040c5a58bbf5974fa4720739cd887"
+  resolved "https://github.com/tomasruizr/types-crocks.git#f18926f93afd73f3f5c83857a4066899a9d8167e"
 
 "@types/express-serve-static-core@^4.17.18":
   version "4.17.20"
