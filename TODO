@@ -1,0 +1,8 @@
+Pendientes Encuentro May 29 2021:
+  ☐ Agregar el DbManager a los components
+  ☐ Implementar los endpoints como async (hacer un ensureAsync)
+  ☐ hacer una estructura compleja para los usuarios con otros modulos
+  ☐ [Result] Implementar Create (JSON.parse)
+  ☐ [Pair] formatear el resultado del user con la data del otro modulo, tipo assign
+  ☐ [Maybe] Implementar relación con un segundo modulo 1->N para devolver asociación
+  ☐ [Either] (hacer algo por rango de contador de elementos)

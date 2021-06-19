@@ -1,8 +1,9 @@
-import { assert } from 'chai';
 import * as mod from './DbManager';
 
+import { assert } from 'chai';
+
 describe( 'DbManager', function() {
-  let dbManager: mod.DbManager;
+  let dbManager: mod.IDbManager;
   interface DATA {name:string, ref:number};
   const data = {name:'tomas', ref:1};
   this.beforeEach(() => {

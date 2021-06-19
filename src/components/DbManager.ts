@@ -1,7 +1,7 @@
 import { Config } from "src";
 import { randomBytes } from "crypto";
 
-export interface DbManager{
+export interface IDbManager{
   _db: Record<string, any>
   create<T>(collection: string, data: T, key?: string): Promise<string>
   read<T>(collection:string, filter: Partial<T>): Promise<T[]>
@@ -11,9 +11,9 @@ export interface DbManager{
   destroy <T>(collection:string, filter: Partial<T>): Promise<T[]>
   destroyById <T>(collection:string, id: string): Promise<T>
 }
-export const create = (config?: Config) => {
+export const create = (dbFixtures?: object) => {
 
-  const db = {};
+  const db = dbFixtures || {};
 
   const generateId = () => randomBytes(16).toString('hex');
 

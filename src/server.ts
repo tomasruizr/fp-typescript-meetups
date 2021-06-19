@@ -1,32 +1,44 @@
-import { createServer, Server } from 'http';
-import Express from 'express';
+import * as u from './utils'
 
+import {IDbManager, create as createDbManager} from './components/DbManager'
 //Components
-import {create as createEndpointManager, EndpointManager} from './components/EndpointManager'
+import {IEndpointManager, create as createEndpointManager} from './components/EndpointManager'
+import { Server, createServer } from 'http';
 
-//Modules
-import {create as User} from './modules/user/userModule';
 import { Config } from 'src';
+import Express from 'express';
+//Modules
+import {create as createUser} from './modules/user/userController';
 
-export interface Components{
-  endpointManager: EndpointManager
+export type Utils = typeof u;
+
+
+
+export interface IComponents{
+  endpointManager: IEndpointManager
+  dbManager: IDbManager
 }
 
-export function create() {
+export function create(dbFixtures?:object) {
   const App = Express();
   const endpointManager = createEndpointManager( App );
+  const dbManager = createDbManager(dbFixtures);
 
+  const components: IComponents = {
+    endpointManager,
+    dbManager
+  };
   // Create the Modules
   [
-    User
-  ].map( createFn => createFn({ endpointManager }));
+    createUser,
+  ].map( createFn => createFn(components, u));
 
   const server = createServer( App );
   return server;
 }
 
 export function start( server: Server, config: Config ) {
-  server.listen( config.httpServer.port, () => {
+  return server.listen( config.httpServer.port, () => {
     console.log( `server listening on ${config.httpServer.port}` );
   });
 }
